@@ -7,7 +7,6 @@ import axios from 'axios';
 Vue.config.productionTip = false
 
 window.axios = axios;
-window.hostApi = "http://localhost:8000/api"
 new Vue({
   router,
   vuetify,

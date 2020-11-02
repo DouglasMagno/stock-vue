@@ -87,7 +87,7 @@ export default {
   methods: {
     loadProducts() {
       this.loading = true;
-      window.axios.get(`${window.hostApi}/products`).then((response) => {
+      window.axios.get(`${process.env.VUE_APP_ROOT_API}/products`).then((response) => {
         this.$set(this, "products", response.data);
         this.loading = false;
       });
@@ -104,7 +104,7 @@ export default {
     },
     send(){
       this.loading = true;
-      window.axios.post(`${window.hostApi}/history/create`, this.forms).then((response) => {
+      window.axios.post(`${process.env.VUE_APP_ROOT_API}/history/create`, this.forms).then((response) => {
         if (response.status !== 200){
           alert("Fail to save movement");
         }

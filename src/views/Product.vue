@@ -136,13 +136,13 @@ export default {
   methods: {
     fetchProducts() {
       this.loading = true;
-      window.axios.get(`${window.hostApi}/products`).then((response) => {
+      window.axios.get(`${process.env.VUE_APP_ROOT_API}/products`).then((response) => {
         this.$set(this, "products", response.data);
         this.loading = false;
       });
     },
     createProducts(programs){
-      window.axios.post(`${window.hostApi}/products/create`, programs).then((response) => {
+      window.axios.post(`${process.env.VUE_APP_ROOT_API}/products/create`, programs).then((response) => {
         if (response.status !== 200){
           alert("Fail to save programs");
         }
@@ -151,7 +151,7 @@ export default {
     },
     updateProducts(editPrograms){
       this.loading = true;
-      window.axios.put(`${window.hostApi}/products/update`, editPrograms).then((response) => {
+      window.axios.put(`${process.env.VUE_APP_ROOT_API}/products/update`, editPrograms).then((response) => {
         if (response.status !== 200){
           alert("Fail to update programs");
         }
@@ -171,7 +171,7 @@ export default {
     deletePrograms(){
       this.loading = true;
       const programsToDelete = this.products.filter((p) => p.selected === true).map(p => p.id);
-      window.axios.delete(`${window.hostApi}/products/delete`, {data: programsToDelete}).then((response) => {
+      window.axios.delete(`${process.env.VUE_APP_ROOT_API}/products/delete`, {data: programsToDelete}).then((response) => {
         if (response.status !== 200){
           alert("Fail to delete programs");
         }

@@ -62,7 +62,7 @@ export default {
   methods: {
     fetchProducts(){
       this.loading = true;
-      window.axios.get(`${window.hostApi}/history`).then((response) => {
+      window.axios.get(`${process.env.VUE_APP_ROOT_API}/history`).then((response) => {
         this.$set(this, "histories", response.data);
         this.loading = false;
       });
